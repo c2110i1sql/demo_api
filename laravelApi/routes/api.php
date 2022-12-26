@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CategoryApiController;
+use App\Http\Controllers\Api\ProductApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,5 +21,6 @@ use App\Http\Controllers\Api\CategoryApiController;
 // });
 
 Route::resources([
-    'category' => CategoryApiController::class
+    'category' => CategoryApiController::class,
+    'product' =>ProductApiController::class
 ]);

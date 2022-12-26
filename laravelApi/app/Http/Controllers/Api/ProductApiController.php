@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Categoryresource;
+use App\Http\Resources\ProductResource;
 
-class CategoryApiController extends Controller
+class ProductApiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,12 @@ class CategoryApiController extends Controller
      */
     public function index()
     {
-        return Category::all();
-        // return Categoryresource::collection(Category::all());
+        $data = Product::all();
+        return [
+            'result' => ProductResource::collection($data),
+            'success' => true,
+            'message' => 'Thêm mới thành công',
+        ];
     }
 
     /**
@@ -38,30 +42,16 @@ class CategoryApiController extends Controller
      */
     public function store(Request $request)
     {
-
-        // validate
-        if ($cat = Category::create($request->all())) {
-            return [
-                'success' => true,
-                'message' => 'Thêm mới thành công',
-                'result' => $cat
-            ];
-        }
-
-        return [
-            'success' => false,
-            'message' => 'Thêm mới không thành công',
-            'result' => null
-        ];
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Product $product)
     {
         //
     }
@@ -69,10 +59,10 @@ class CategoryApiController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(Product $product)
     {
         //
     }
@@ -81,10 +71,10 @@ class CategoryApiController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Product $product)
     {
         //
     }
@@ -92,10 +82,10 @@ class CategoryApiController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Product $product)
     {
         //
     }
